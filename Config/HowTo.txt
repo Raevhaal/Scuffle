@@ -1,0 +1,40 @@
+SCUFFLE relies on values stored in address_map.ini to find presented data. 
+After an update or patch, the values will change, however they can be found again with cheat engine.
+
+Here is (old, but still more or less viable) how to video: https://www.youtube.com/watch?v=kIdDaCN3KaA
+
+All these addresses are global which means they are *green* in cheat engine and will be located at the bottom of the list of matching addresses.
+
+Global timer (4 bytes): 
+	The timer ticks up by 1 every frame and resets to 0 when training mode is reset. There are multiple of these, all seems to be good equally good
+	Some timers tick a little bit faster then others. It seems to not be any issue and all are equally good
+
+p1/p2 input address (2 bytes): 
+	Input address can be found by holding buttons down. 0 for no button, 1 for a, 2 for b, 4 for k, and 8 for g. Combinations are added together. 
+ 	The second part of the input buffer is direction held, so don't hold any directions. Anyway, 0 is for neutral, 1024 for right, 2048 for left
+ 	Don't use the first global address found, it picks up inputs for both p1 and p2 in training mode!
+
+p1/p2 movelist address (8 bytes):
+	Xianghua movelist starting bytes: 4b 48 31 31 00 00 00 00 00 00 00 00
+	1. pick xianghua for p1 and p2 
+	2. search for that byte array 
+	3. there are 2 (sometimes even more) addresses found. They may or may not be equally good, what you will find in next step.
+	4. search for a global address that points to the address of that array 
+	5. there should be four addresses, use the 1st for p1 and 3rd for p2
+		5a. if there is less then four addresses, then given array was probably wrong
+		5b. 1st and 2nd address is for p1; 3rd and 4th for p2. They seem to be equally good in case of needed but this wasn't tested properly
+
+p1/p2 move id (2 bytes): 
+	xianghua's a/a/b string has move IDs 264/266/269 & A+B is 344. Neutral is 65535
+ 	There will be multiple matches (25 in v2.30) , it is CRITICAL to pick the proper one. Please be careful!
+ 	There seems to be two requirements that needs to be fulfilled to identify properly working match:
+	1. If you hold direction for 8WR and then release it, value of 89 must be shown
+		1a. As this value is valid for very short amount of time, this needs to be tested repeatedly as it will not be always visible
+	2. If your character is hit by opponent, most of addresses will briefly show some value. This is WRONG
+		2a. This values differs based on move that hit you. For testing purposes, hit by Xhiangua's A cause value of 8293 to be shown
+		2b. It is critical to find match that never changes *on hit* and instead, shows consistently the neutral value of 65535
+		2c. Just as with the 8WR test, this hit value is shown only briefly so test this multiple times
+	Note: If you press START just after being hit, values in memory will be frozen. This can help a lot with your tests!
+
+p1/p2 guard damage (2 bytes): 
+	xianghua's A/A/B string has gdam 4/4/16. A+B has guard damage 38.
