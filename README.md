@@ -20,6 +20,5 @@ Check out https://www.youtube.com/watch?v=GjB-MRonAFc or read [How the Movelist 
 
 # Credits
 Rougelite is the gigachad who originally made scuffle and thanks to Unicorn_cz for all the help :)
- 
   
 (https://www.youtube.com/user/Roguelike)
