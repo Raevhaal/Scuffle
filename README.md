@@ -5,7 +5,7 @@ Soul Calibur 6 Live Frame Data Reader -- based on the useful parts of the popula
 
 # Usage
 
-Download the latest release from https://github.com/rougelite/SCUFFLE/releases. Run the .exe at the same as Soul Calibur 6 (PC version only) and it will read the memory to display internal frame data. The frame data overlay should display at the top of the screen, works only in windowed or windowed borderless mode (NO FULLSCREEN).
+Download the latest release from https://github.com/aHorseface/Scuffle/releases. Run the .exe at the same as Soul Calibur 6 (PC version only) and it will read the memory to display internal frame data. The frame data overlay should display at the top of the screen, works only in windowed or windowed borderless mode (NO FULLSCREEN).
 
 # Technical
 
@@ -16,3 +16,8 @@ To build the project, make sure you have python 3.5 and pyinstaller and run the 
 # I want to know more!
 
 Check out https://www.youtube.com/watch?v=GjB-MRonAFc or read [How the Movelist is Parsed](__HowTheMovelistBytesWork.md)
+  
+
+# Credits
+Rougelite is the gigachad who originally made scuffle
+and thanks to Unicorn_cz for all the help :)
